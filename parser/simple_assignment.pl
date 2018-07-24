@@ -4,13 +4,12 @@
 	  ]).
 
 :- use_module(library(dcg/basics), [
-		  number//1,
-		  string_without//2
+		  number//1
 	      ]).
 
 :- use_module(variables).
 :- use_module(space).
-
+:- use_module(string_value).
 
 
 simple_assignment(Variable:=Value) -->
@@ -66,7 +65,7 @@ value(null) --> null.
 value(true) --> true.
 value(false) --> false.
 value(number(Number)) --> number(Number).
-value(string(String)) --> string(String).
+value(string(String)) --> string_value(String).
 
 
 mysterious --> "mysterious".
@@ -84,27 +83,3 @@ true --> "true".
 false --> "false".
 
 
-string(single(String)) --> single_string(String).
-string(double(String)) --> double_string(String).
-
-
-single_string(String, Codes, Rest) :-
-	single_string_codes(String_Codes, Codes, Rest),
-	string_codes(String, String_Codes).
-
-
-single_string_codes(String_Codes) -->
-	"'",
-	string_without("'", String_Codes),
-	"'".
-
-
-double_string(String, Codes, Rest) :-
-	double_string_codes(String_Codes, Codes, Rest),
-	string_codes(String, String_Codes).
-
-
-double_string_codes(String_Codes) -->
-	"\"",
-	string_without("\"", String_Codes),
-	"\"".

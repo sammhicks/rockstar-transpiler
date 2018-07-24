@@ -25,14 +25,12 @@ common_variable(Name) -->
 	string_type(Name, lower).
 
 
-common_variable_prefix -->
-	"the".
-
-common_variable_prefix -->
-	"my".
-
-common_variable_prefix -->
-	"your".
+common_variable_prefix --> "the".
+common_variable_prefix --> "The".
+common_variable_prefix --> "my".
+common_variable_prefix --> "My".
+common_variable_prefix --> "your".
+common_variable_prefix --> "Your".
 
 
 proper_variable(Name, Codes, Rest) :-

@@ -47,7 +47,7 @@ null --> "nobody".
 
 
 
-string_assignment(Variable:-String) -->
+string_assignment(Variable:-string(String)) -->
 	variable(Variable),
 	spaces,
 	says_keyword,
@@ -63,7 +63,7 @@ string_rest(String, Codes, []) :-
 	string_codes(String, Codes).
 
 
-number_assignment(Variable:-Number) -->
+number_assignment(Variable:-number(Number)) -->
 	variable(Variable),
 	spaces,
 	is_was_were_keyword,
